@@ -1,0 +1,52 @@
+{
+    "env_name" : "mt50",
+    "env":{
+        "reward_scale":1,
+        "obs_norm":false
+    },
+    "meta_env":{
+        "obs_type": "with_goal"
+    },
+    "replay_buffer":{
+        "size": 1e7
+    },
+    "net":{ 
+        "hidden_shapes": [400, 400],
+        "em_hidden_shapes": [400],
+        "num_layers": 4,
+        "num_modules": 4,
+        "module_hidden": 128,
+        "num_gating_layers": 2,
+        "gating_hidden": 256,
+        "add_bn": false,
+        "pre_softmax": false
+    },
+    "general_setting": {
+        "discount" : 0.99,
+        "pretrain_epochs" : 20,
+        "num_epochs" : 5000,
+        "epoch_frames" : 200,
+        "max_episode_frames" : 1000,
+
+        "batch_size" : 6400,
+        "min_pool" : 10000,
+
+        "target_hard_update_period" : 1000,
+        "use_soft_update" : true,
+        "tau" : 0.005,
+        "opt_times" : 200,
+
+        "eval_episodes" : 3
+    },
+    "sac":{
+        
+        "plr" : 3e-4,
+        "qlr" : 3e-4,
+        
+        "reparameterization": true,
+        "automatic_entropy_tuning": true,
+        "temp_reweight": true,
+        "policy_std_reg_weight": 0,
+        "policy_mean_reg_weight": 0
+    }
+}
